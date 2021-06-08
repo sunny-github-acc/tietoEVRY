@@ -2,8 +2,8 @@ import { useState } from "react";
 import Input from "./Input";
 
 const Info = () => {
-  const [start, setStart] = useState("Vilnius");
-  const [finish, setFinish] = useState("Klaipeda");
+  const [start, setStart] = useState("");
+  const [finish, setFinish] = useState("");
 
   return (
     <>

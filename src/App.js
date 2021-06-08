@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/Header";
 import TravelInfo from "./components/TravelInfo";
 
 function App() {
@@ -113,10 +114,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{}</p>
-        <TravelInfo />
-      </header>
+      <Header />
+      <TravelInfo />
     </div>
   );
 }
