@@ -22,7 +22,7 @@ export default function Input({ placeholder, setInput }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setHelperText("Pending...");
+    setHelperText("Searching...");
     setError(false);
 
     // Destination to gps
