@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
-import React, { useContext } from "react";
+import React from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DiscreteSlider({ handleChange }) {
+export default function DiscreteSlider({ handleChange, value }) {
   const styles = useStyles();
 
   const AmountSlider = createMuiTheme({
@@ -39,7 +39,7 @@ export default function DiscreteSlider({ handleChange }) {
     <div className={styles.root}>
       <ThemeProvider theme={AmountSlider}>
         <Slider
-          defaultValue={20}
+          value={value}
           onChange={(e, value) => handleChange(value)}
           aria-labelledby="discrete-slider-custom"
           step={10}

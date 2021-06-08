@@ -14,9 +14,16 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export default function Input({ placeholder, setInput }) {
+export default function Input({
+  placeholder,
+  location,
+  setLocation,
+  setStartLatitude,
+  setStartLongitude,
+  setFinishLatitude,
+  setFinishLongitude,
+}) {
   const classes = useStyles();
-  const [value, setValue] = useState("");
   const [helperText, setHelperText] = useState("");
   const [error, setError] = useState(false);
 
@@ -28,19 +35,29 @@ export default function Input({ placeholder, setInput }) {
     // Destination to gps
     const params = {
       auth: "113516871718232291270x24806",
-      locate: value,
+      locate: location,
       json: "1",
     };
+
     axios
       .get("https://geocode.xyz", { params })
       .then((response) => {
         if (response.data.error) {
           setError(true);
-          setHelperText(`We could not find "${value}"`);
+          setHelperText(`We could not find "${location}"`);
         } else {
-          setInput(value);
           setError(false);
           setHelperText("");
+
+          if (setStartLatitude) {
+            setStartLatitude(response.data.latt);
+            setStartLongitude(response.data.longt);
+          }
+
+          if (setFinishLatitude) {
+            setFinishLatitude(response.data.latt);
+            setFinishLongitude(response.data.longt);
+          }
         }
       })
       .catch(() => {
@@ -55,8 +72,8 @@ export default function Input({ placeholder, setInput }) {
         id="standard-primary"
         label={placeholder}
         color="primary"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
         helperText={helperText}
         error={error}
         onBlur={handleSubmit}
