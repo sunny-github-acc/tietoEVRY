@@ -14,12 +14,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomizedButtons() {
+export default function CustomizedButtons({ handleOpen }) {
   const classes = useStyles();
 
   return (
     <div>
-      <ColorButton variant="outlined" className={classes.margin}>
+      <ColorButton
+        variant="outlined"
+        className={classes.margin}
+        onClick={handleOpen}
+      >
         Let's pack
       </ColorButton>
       {/* <ThemeProvider theme={theme}>

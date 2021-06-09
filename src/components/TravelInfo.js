@@ -5,7 +5,7 @@ import GlobalContext from "../globalState/Context";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import Button from "./Button";
+import Modal from "./Modal";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,46 +33,46 @@ const Info = () => {
   const [triggerSetDistance, setTriggerSetDistance] = useState();
 
   // Get current gps
-  useEffect(() => {
-    if (typeof Context.start !== "undefined") return;
+  // useEffect(() => {
+  //   if (typeof Context.start !== "undefined") return;
 
-    let coordinates;
+  //   let coordinates;
 
-    if ("geolocation" in navigator) {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 1000,
-        maximumAge: 0,
-      };
+  //   if ("geolocation" in navigator) {
+  //     const options = {
+  //       enableHighAccuracy: true,
+  //       timeout: 1000,
+  //       maximumAge: 0,
+  //     };
 
-      function success(position) {
-        coordinates = position.coords;
+  //     function success(position) {
+  //       coordinates = position.coords;
 
-        setStartLatitude(coordinates.latitude);
-        setStartLongitude(coordinates.longitude);
+  //       setStartLatitude(coordinates.latitude);
+  //       setStartLongitude(coordinates.longitude);
 
-        // Get current city
-        if (!coordinates) return;
-        const currentAPI = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&localityLanguage=en`;
-        axios
-          .get(currentAPI)
-          .then(function (response) {
-            Context.setStart(response.data.city);
-          })
-          .catch(function (error) {
-            console.warn(error);
-          });
-      }
+  //       // Get current city
+  //       if (!coordinates) return;
+  //       const currentAPI = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&localityLanguage=en`;
+  //       axios
+  //         .get(currentAPI)
+  //         .then(function (response) {
+  //           Context.setStart(response.data.city);
+  //         })
+  //         .catch(function (error) {
+  //           console.warn(error);
+  //         });
+  //     }
 
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
+  //     function error(err) {
+  //       console.warn(`ERROR(${err.code}): ${err.message}`);
+  //     }
 
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    } else {
-      console.warn("Geolocation Not Available");
-    }
-  }, [Context]);
+  //     navigator.geolocation.getCurrentPosition(success, error, options);
+  //   } else {
+  //     console.warn("Geolocation Not Available");
+  //   }
+  // }, [Context]);
 
   // Handle distance
   useEffect(() => {
@@ -141,7 +141,7 @@ const Info = () => {
         Length of stay: {Context.lengthStay} days
       </Typography>
       <Slider handleChange={Context.setLengthStay} value={Context.lengthStay} />
-      <Button />
+      <Modal />
     </div>
   );
 };
