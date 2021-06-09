@@ -5,8 +5,16 @@ import GlobalContext from "../globalState/Context";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import Button from "./Button";
 
 const useStyles = makeStyles(() => ({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
+    height: "calc(80vh - 20px)",
+  },
   width: {
     width: "25ch",
     fontSize: 20,
@@ -22,10 +30,11 @@ const Info = () => {
   const [startLongitude, setStartLongitude] = useState();
   const [finishLatitude, setFinishLatitude] = useState();
   const [finishLongitude, setFinishLongitude] = useState();
+  const [triggerSetDistance, setTriggerSetDistance] = useState();
 
   // Get current gps
   useEffect(() => {
-    if (Context.start) return;
+    if (typeof Context.start !== "undefined") return;
 
     let coordinates;
 
@@ -48,7 +57,6 @@ const Info = () => {
         axios
           .get(currentAPI)
           .then(function (response) {
-            console.log(Context.start);
             Context.setStart(response.data.city);
           })
           .catch(function (error) {
@@ -90,20 +98,23 @@ const Info = () => {
 
       if (!isNaN(distance)) Context.setDistance(Math.trunc(distance / 1000));
     };
+
     handleDistance(
       { latitude: startLatitude, longitude: startLongitude },
       { latitude: finishLatitude, longitude: finishLongitude }
     );
-  }, [Context, finishLatitude, finishLongitude, startLatitude, startLongitude]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerSetDistance]);
 
   return (
-    <>
+    <div className={styles.root}>
       <Input
         placeholder={"Departure"}
         location={Context.start}
         setLocation={Context.setStart}
         setStartLatitude={setStartLatitude}
         setStartLongitude={setStartLongitude}
+        setTriggerSetDistance={setTriggerSetDistance}
       />
       <Input
         placeholder={"Arrival"}
@@ -111,17 +122,17 @@ const Info = () => {
         setLocation={Context.setFinish}
         setFinishLatitude={setFinishLatitude}
         setFinishLongitude={setFinishLongitude}
+        setTriggerSetDistance={setTriggerSetDistance}
       />
       <Typography
         id="discrete-slider-always"
         gutterBottom
         className={styles.width}
       >
-        Distance: {Context.distance === 100 && "+"}
+        Distance:
         {Context.distance} km
       </Typography>
       <Slider handleChange={Context.setDistance} value={Context.distance} />
-
       <Typography
         id="discrete-slider-always"
         gutterBottom
@@ -130,7 +141,8 @@ const Info = () => {
         Length of stay: {Context.lengthStay} days
       </Typography>
       <Slider handleChange={Context.setLengthStay} value={Context.lengthStay} />
-    </>
+      <Button />
+    </div>
   );
 };
 

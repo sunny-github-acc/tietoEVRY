@@ -16,12 +16,13 @@ const useStyles = makeStyles((theme) =>
 
 export default function Input({
   placeholder,
-  location,
+  location = "",
   setLocation,
   setStartLatitude,
   setStartLongitude,
   setFinishLatitude,
   setFinishLongitude,
+  setTriggerSetDistance,
 }) {
   const classes = useStyles();
   const [helperText, setHelperText] = useState("");
@@ -34,7 +35,7 @@ export default function Input({
 
     // Destination to gps
     const params = {
-      auth: "113516871718232291270x24806",
+      auth: "139152287377000458062x41123",
       locate: location,
       json: "1",
     };
@@ -48,7 +49,6 @@ export default function Input({
         } else {
           setError(false);
           setHelperText("");
-
           if (setStartLatitude) {
             setStartLatitude(response.data.latt);
             setStartLongitude(response.data.longt);
@@ -58,6 +58,8 @@ export default function Input({
             setFinishLatitude(response.data.latt);
             setFinishLongitude(response.data.longt);
           }
+
+          setTriggerSetDistance(Math.random());
         }
       })
       .catch(() => {

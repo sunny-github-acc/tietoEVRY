@@ -5,8 +5,8 @@ import TravelInfo from "./components/TravelInfo";
 import Context from "./globalState/Context";
 
 function App() {
-  const [start, setStart] = useState("");
-  const [finish, setFinish] = useState("");
+  const [start, setStart] = useState();
+  const [finish, setFinish] = useState();
   const [distance, setDistance] = useState(100);
   const [lengthStay, setLengthStay] = useState(20);
 
