@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/sunny-github-acc/tietoEVRY/static/css/main.d7e7d02a.chunk.css",
+    "main.js": "/sunny-github-acc/tietoEVRY/static/js/main.c107c81b.chunk.js",
+    "main.js.map": "/sunny-github-acc/tietoEVRY/static/js/main.c107c81b.chunk.js.map",
+    "runtime-main.js": "/sunny-github-acc/tietoEVRY/static/js/runtime-main.abf34dd0.js",
+    "runtime-main.js.map": "/sunny-github-acc/tietoEVRY/static/js/runtime-main.abf34dd0.js.map",
+    "static/js/2.898197f1.chunk.js": "/sunny-github-acc/tietoEVRY/static/js/2.898197f1.chunk.js",
+    "static/js/2.898197f1.chunk.js.map": "/sunny-github-acc/tietoEVRY/static/js/2.898197f1.chunk.js.map",
+    "index.html": "/sunny-github-acc/tietoEVRY/index.html",
+    "static/css/main.d7e7d02a.chunk.css.map": "/sunny-github-acc/tietoEVRY/static/css/main.d7e7d02a.chunk.css.map",
+    "static/js/2.898197f1.chunk.js.LICENSE.txt": "/sunny-github-acc/tietoEVRY/static/js/2.898197f1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.abf34dd0.js",
+    "static/js/2.898197f1.chunk.js",
+    "static/css/main.d7e7d02a.chunk.css",
+    "static/js/main.c107c81b.chunk.js"
+  ]
+}
