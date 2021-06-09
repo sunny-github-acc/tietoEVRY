@@ -17,7 +17,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DiscreteSlider({ handleChange, value }) {
+export default function DiscreteSlider({
+  handleChange,
+  value,
+  min,
+  max,
+  step,
+}) {
   const styles = useStyles();
 
   const AmountSlider = createMuiTheme({
@@ -30,7 +36,7 @@ export default function DiscreteSlider({ handleChange, value }) {
           backgroundColor: "#4A4A49",
         },
         track: { backgroundColor: "#565656" },
-        rail: { backgroundColor: "#BABABA" },
+        rail: { backgroundColor: "#565656", height: 1.5 },
       },
     },
   });
@@ -42,9 +48,11 @@ export default function DiscreteSlider({ handleChange, value }) {
           value={value}
           onChange={(e, value) => handleChange(value)}
           aria-labelledby="discrete-slider-custom"
-          step={10}
           valueLabelDisplay="auto"
           className={styles.width}
+          min={min}
+          max={max}
+          step={step}
         />
       </ThemeProvider>
     </div>

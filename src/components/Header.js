@@ -9,7 +9,6 @@ const useStyles = makeStyles(() =>
       alignItems: "center",
       justifyContent: "space-between",
       fontWeight: "1000",
-      marginBottom: 20,
     },
     logo: {
       maxHeight: "7vh",
