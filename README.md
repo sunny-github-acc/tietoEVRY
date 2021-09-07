@@ -1,7 +1,7 @@
 # tietoEVRY task
 
 TietoEVRY travel packer's title describes itself. 
-It automatically sets users' location, allows picking a travel destination, automatically sets length and duration. 
+It automatically sets users' location and allows picking a travel destination. After that, length and duration are set automatically. 
 Although, it may be edited.
 Users may also choose the type of activities their travel will include. 
 It then converts this information into a list of travel items. 
