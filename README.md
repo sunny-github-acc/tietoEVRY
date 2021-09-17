@@ -14,7 +14,7 @@ The given list may be updated.
 
 ## Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) 
 
 To run it you can type:
 
